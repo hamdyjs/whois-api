@@ -1,0 +1,30 @@
+{
+  "name": "whois-api",
+  "version": "1.0.0",
+  "description": "Web Api for the Who is android app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/hamdyjs/whois-api.git"
+  },
+  "author": "Ahmed Hamdy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/hamdyjs/whois-api/issues"
+  },
+  "homepage": "https://gitlab.com/hamdyjs/whois-api#README",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4",
+    "jsonwebtoken": "^7.4.3",
+    "morgan": "^1.8.2",
+    "socket.io": "^2.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}
