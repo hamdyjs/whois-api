@@ -3,12 +3,11 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
-var jwt = require('jsonwebtoken');
 var api = require('./api');
 
 var app = express();
 
-app.use(morgan());
+app.use(morgan("combined"));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(function(req, res, next) {
