@@ -27,7 +27,8 @@ api.createRoom = function(req, res) {
 
     jwt.verify(token, config.secret, function(err, decoded) {
         if (err) {
-            res.status(403).json();
+            if (err.name == 'TokenExpiredError') res.status(403).json(true);
+            else res.status(403).json(false);
             return;
         }
 
