@@ -33,7 +33,7 @@ api.createRoom = function(req, res) {
         }
 
         console.log(decoded);
-        tokens[token].rooms = 1;
+        tokens[token].rooms++;
         tokens[token].lastTimestamp = Date.now();
         
         // Generate room key
