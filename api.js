@@ -5,7 +5,6 @@ var config = require('./config');
 var game = require('./game');
 
 var api = {};
-var tokens = {};
 
 api.generateToken = function(req, res) {
     var name = req.body.name;
@@ -13,7 +12,6 @@ api.generateToken = function(req, res) {
         expiresIn: 3600
     });
 
-    tokens[token] = {rooms: 0, lastTimestamp: Date.now()};
     res.status(200).json(token);
 };
 
@@ -31,11 +29,13 @@ api.createRoom = function(req, res) {
             return;
         }
 
-        tokens[token].rooms++;
-        tokens[token].lastTimestamp = Date.now();
-        
-        // Generate room key
-        res.status(200).json();
+        if (game.doesTokenOwnRoom(token)) {
+            res.status(500).json();
+            return;
+        }
+
+        var key = game.createRoom(token);
+        res.status(200).json(key);
     });
 };
 
