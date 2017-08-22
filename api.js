@@ -47,8 +47,7 @@ api.joinRoom = function(req, res) {
     var key = req.body.key;
     var name = req.body.name;
 
-    var room = game.joinRoom(key, name);
-    if (room != null) res.status(200).json(room);
+    if (game.joinRoom(key, name)) res.status(200).json();
     else res.status(500).json();
 };
 

@@ -32,10 +32,12 @@ game.doesTokenOwnRoom = function(token) {
 }
 
 game.joinRoom = function(key, name) {
-    if (rooms[key] != null) {
+    if (rooms[key] == null)
+        return false;
+    else {
         rooms[key].players.push({name: name, score: 0});
-        return rooms[key];
-    } else return null;
+        return true;
+    }
 }
 
 function generateNewRoomKey() {
