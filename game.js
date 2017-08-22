@@ -10,7 +10,7 @@ game.init = function(io) {
     
 };
 
-game.createRoom = function(token) {
+game.createRoom = function(token, name, maxRounds) {
     var key = generateNewRoomKey();
 
     rooms[key] = {

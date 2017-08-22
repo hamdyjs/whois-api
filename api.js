@@ -17,6 +17,9 @@ api.generateToken = function(req, res) {
 
 api.createRoom = function(req, res) {
     var token = req.body.token;
+    var name = req.body.name;
+    var maxRounds = req.body.max_rounds;
+
     if (!token) {
         res.status(403).json();
         return;
@@ -34,7 +37,7 @@ api.createRoom = function(req, res) {
             return;
         }
 
-        var key = game.createRoom(token);
+        var key = game.createRoom(token, name, maxRounds);
         res.status(200).json(key);
     });
 };
