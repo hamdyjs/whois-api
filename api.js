@@ -13,7 +13,6 @@ api.generateToken = function(req, res) {
         expiresIn: Math.floor(Date.now() / 1000) + (60 * 60)
     });
 
-    console.log('Generated token: ' + token);
     tokens[token] = {rooms: 0, lastTimestamp: Date.now()};
     res.status(200).json(token);
 };
@@ -32,7 +31,6 @@ api.createRoom = function(req, res) {
             return;
         }
 
-        console.log(decoded);
         tokens[token].rooms++;
         tokens[token].lastTimestamp = Date.now();
         
