@@ -10,7 +10,7 @@ var tokens = {};
 api.generateToken = function(req, res) {
     var name = req.body.name;
     var token = jwt.sign({name: name}, config.secret, {
-        expiresIn: Math.floor(Date.now() / 1000) + (60 * 60)
+        expiresIn: 3600
     });
 
     tokens[token] = {rooms: 0, lastTimestamp: Date.now()};
