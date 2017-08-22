@@ -42,4 +42,12 @@ api.createRoom = function(req, res) {
     });
 };
 
+api.joinRoom = function(req, res) {
+    var key = req.body.key;
+    var name = req.body.name;
+
+    if (game.joinRoom(key, name)) res.status(200).json();
+    else res.status(500).json();
+};
+
 module.exports = api;

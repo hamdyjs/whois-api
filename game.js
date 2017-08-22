@@ -31,6 +31,15 @@ game.doesTokenOwnRoom = function(token) {
     return tokenOwnRoom[token];
 }
 
+game.joinRoom = function(key, name) {
+    if (rooms[key] == null)
+        return false;
+    else {
+        rooms[key].players.push({name: name, score: 0});
+        return true;
+    }
+}
+
 function generateNewRoomKey() {
     var key = randToken.generate(4);
     while (rooms[key] != null)
