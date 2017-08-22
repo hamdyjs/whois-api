@@ -1,8 +1,8 @@
 'use strict';
 
 var jwt = require('jsonwebtoken');
-var io = require('socket.io');
 var config = require('./config');
+var game = require('./game');
 
 var api = {};
 var tokens = {};

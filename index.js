@@ -15,7 +15,8 @@ app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
-app.listen(3001, function(err) {
+
+var server = app.listen(3001, function(err) {
     if (err) {
         console.error(err);
         return;
@@ -30,3 +31,7 @@ app.get('/', function(req, res) {
 
 app.route('/auth').post(api.generateToken);
 app.route('/room').post(api.createRoom);
+
+// Initialize the game module
+var io = require('socket.io')(server);
+require('./game').init(io);
