@@ -5,6 +5,7 @@ var config = require('./config');
 var game = require('./game');
 
 var api = {};
+var minimumVersionCode = 1;
 
 api.generateToken = function(req, res) {
     var name = req.body.name;
@@ -49,5 +50,9 @@ api.joinRoom = function(req, res) {
     if (game.joinRoom(key, name)) res.status(200).json();
     else res.status(500).json();
 };
+
+api.getMinimumVersionCode = function(req, res) {
+    res.status(200).json(minimumVersionCode);
+}
 
 module.exports = api;

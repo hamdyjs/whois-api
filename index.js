@@ -32,6 +32,7 @@ app.get('/', function(req, res) {
 app.route('/auth').post(api.generateToken);
 app.route('/room').post(api.createRoom);
 app.route('/room/join').post(api.joinRoom);
+app.route('/version').get(api.getMinimumVersionCode);
 
 // Initialize the game module
 var io = require('socket.io')(server);
