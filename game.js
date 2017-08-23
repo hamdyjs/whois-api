@@ -14,14 +14,20 @@ game.createRoom = function(token, name, maxRounds) {
     var key = generateNewRoomKey();
 
     rooms[key] = {
-        players: [{name: name, score: 0}],
+        players: {},
         rounds: 0,
         maxRounds: maxRounds,
-        lastRound: {
-            votes: [],
-            voters: []
-        }
+        questionsAsked: [],
+        roundQuestion: null,
+        roundData: {
+            voted: 0, // Number of players voted
+            votes: {}, // Number of votes each player got
+            voters: {} // Who voted to who
+        },
+        roundReady: {}
     };
+    rooms[key].players[name] = {score: 0};
+
     tokenOwnRoom[token] = true;
 
     return key;
@@ -33,10 +39,12 @@ game.doesTokenOwnRoom = function(token) {
 
 game.joinRoom = function(key, name) {
     if (rooms[key] == null)
-        return false;
+        return -1;
+    else if (rooms[key].players[name] != null)
+        return 0;
     else {
-        rooms[key].players.push({name: name, score: 0});
-        return true;
+        rooms[key].players[name] = {score: 0};
+        return 1;
     }
 }
 

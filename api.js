@@ -47,8 +47,10 @@ api.joinRoom = function(req, res) {
     var key = req.body.key;
     var name = req.body.name;
 
-    if (game.joinRoom(key, name)) res.status(200).json();
-    else res.status(500).json();
+    var status = game.joinRoom(key, name);
+    if (status == -1) res.status(1000).json();
+    else if (status == 0) res.status(1001).json();
+    else if (status == 1) res.status(200).json();
 };
 
 api.getMinimumVersionCode = function(req, res) {
