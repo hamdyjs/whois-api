@@ -8,6 +8,8 @@ var tokenOwnRoom = {};
 
 game.init = function(io) {
     io.on('connection', function(socket) {
+        console.log('A client connected', socket);
+
         // When a player joins the room
         socket.on('client_join_room', function(data) {
             // Notify other players of the new player
