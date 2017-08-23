@@ -28,13 +28,13 @@ game.createRoom = function(token, name, maxRounds) {
     };
     rooms[key].players[name] = {score: 0};
 
-    tokenOwnRoom[token] = true;
+    tokenRoom[token] = key;
 
     return key;
 };
 
-game.doesTokenOwnRoom = function(token) {
-    return tokenOwnRoom[token];
+game.getTokenRoom = function(token) {
+    return tokenRoom[token];
 }
 
 game.joinRoom = function(key, name) {

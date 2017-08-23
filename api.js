@@ -33,7 +33,7 @@ api.createRoom = function(req, res) {
             return;
         }
 
-        if (game.doesTokenOwnRoom(token)) {
+        if (game.getTokenRoom(token) != null) {
             res.status(500).json();
             return;
         }
