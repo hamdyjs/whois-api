@@ -20,11 +20,11 @@ game.createRoom = function(token, name, maxRounds) {
         questionsAsked: [],
         roundQuestion: null,
         roundData: {
-            voted: 0, // Number of players voted
+            voted: [], // Number of players voted
             votes: {}, // Number of votes each player got
             voters: {} // Who voted to who
         },
-        roundReady: {}
+        roundReady: []
     };
     rooms[key].players[name] = {score: 0};
 
