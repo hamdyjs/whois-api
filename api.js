@@ -29,7 +29,7 @@ api.createRoom = function(req, res) {
     jwt.verify(token, config.secret, function(err, decoded) {
         if (err) {
             if (err.name == 'TokenExpiredError') res.status(403).json(true);
-            else res.status(403).json(false);
+            else res.status(403).json();
             return;
         }
 
@@ -48,9 +48,9 @@ api.joinRoom = function(req, res) {
     var name = req.body.name;
 
     var status = game.joinRoom(key, name);
-    if (status == -1) res.status(1000).json();
-    else if (status == 0) res.status(1001).json();
-    else if (status == 1) res.status(200).json();
+    if (status == -1) res.status(200).json(-1);
+    else if (status == 0) res.status(200).json(0);
+    else if (status == 1) res.status(200).json(1);
 };
 
 api.getMinimumVersionCode = function(req, res) {
